@@ -1,0 +1,51 @@
+@model SanPham
+<form method="post" class="khung bieu-mau">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Mã bánh</label>
+        <input asp-for="MaBanh" />
+    </div>
+
+    <div>
+        <label>Tên bánh</label>
+        <input asp-for="TenBanh" />
+    </div>
+
+    <div>
+        <label>Loại bánh</label>
+        <select asp-for="LoaiBanh">
+            <option>Bánh kem</option>
+            <option>Bánh mì</option>
+            <option>Bánh ngọt</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Giá bán</label>
+        <input asp-for="GiaBan" type="number" />
+    </div>
+
+    <div>
+        <label>Số lượng</label>
+        <input asp-for="SoLuong" type="number" />
+    </div>
+
+    <div>
+        <label>Trạng thái</label>
+        <select asp-for="TrangThai">
+            <option>Đang bán</option>
+            <option>Hết hàng</option>
+        </select>
+    </div>
+
+    <div class="dong-day-du">
+        <label>Mô tả</label>
+        <textarea asp-for="MoTa"></textarea>
+    </div>
+
+    <div class="dong-day-du nut-dong">
+        <button class="nut-chinh" type="submit">Lưu</button>
+        <a class="nut-phu" asp-action="Index">Hủy</a>
+    </div>
+</form>
