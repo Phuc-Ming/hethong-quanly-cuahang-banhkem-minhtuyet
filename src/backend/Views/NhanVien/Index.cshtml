@@ -1,0 +1,21 @@
+@model List<NhanVien>
+@{
+    ViewData["Title"] = "Quản lý nhân viên";
+}
+<h2 class="page-title">Quản lý nhân viên</h2>
+<form class="toolbar" method="get"><input name="tuKhoa" value="@ViewBag.TuKhoa" placeholder="Tìm kiếm nhân viên" /><button class="btn secondary">Tìm</button></form>
+<form class="quick-add" method="post" asp-action="Them">
+    <input name="MaNV" placeholder="Mã NV" />
+    <input name="HoTen" placeholder="Họ tên" required />
+    <input name="SDT" placeholder="SĐT" />
+    <select name="ChucVu"><option>Quản lý</option><option>Nhân viên</option></select>
+    <input name="TaiKhoan" placeholder="Tài khoản" required />
+    <input name="MatKhau" placeholder="Mật khẩu" required />
+    <button class="btn primary">+ Thêm nhân viên</button>
+</form>
+<div class="card"><table><thead><tr><th>Mã NV</th><th>Họ tên nhân viên</th><th>SĐT</th><th>Chức vụ</th><th>Tài khoản</th><th>Trạng thái</th></tr></thead><tbody>
+@foreach (var item in Model)
+{
+<tr><td>@item.MaNV</td><td>@item.HoTen</td><td>@item.SDT</td><td>@item.ChucVu</td><td>@item.TaiKhoan</td><td><span class="badge">@item.TrangThai</span></td></tr>
+}
+</tbody></table></div>
