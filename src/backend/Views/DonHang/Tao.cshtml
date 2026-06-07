@@ -1,0 +1,49 @@
+@model TaoDonHang
+@{
+    ViewData["Title"] = "Tạo hóa đơn";
+}
+<section class="trang">
+    <h2>Tạo hóa đơn</h2>
+
+    <form method="post" class="hoa-don">
+        <div class="khung">
+            <h3>Thông tin khách hàng</h3>
+
+            <label>Tên khách hàng</label>
+            <input asp-for="TenKhachHang" placeholder="Nhập tên khách hàng" />
+
+            <label>Số điện thoại</label>
+            <input asp-for="SDT" placeholder="Nhập số điện thoại" />
+
+            <label>Địa chỉ</label>
+            <input asp-for="DiaChi" placeholder="Nhập địa chỉ" />
+
+            <label>Ngày nhận bánh</label>
+            <input asp-for="NgayNhan" type="date" />
+
+            <label>Ghi chú yêu cầu</label>
+            <textarea asp-for="GhiChu" placeholder="Ví dụ: ghi chữ Chúc mừng sinh nhật..."></textarea>
+        </div>
+
+        <div class="khung">
+            <h3>Thông tin sản phẩm</h3>
+
+            <label>Chọn sản phẩm</label>
+            <select asp-for="SanPhamId">
+                @foreach (var sp in Model.DanhSachSanPham)
+                {
+                    <option value="@sp.Id">@sp.TenBanh - @sp.GiaBan.ToString("N0")đ</option>
+                }
+            </select>
+
+            <label>Số lượng</label>
+            <input asp-for="SoLuong" type="number" min="1" />
+
+            <div class="nut-dong">
+                <button class="nut-chinh" type="submit">Lưu đơn hàng</button>
+                <button class="nut-phu" type="button" onclick="window.print()">In hóa đơn</button>
+                <a class="nut-phu" asp-action="Index">Hủy</a>
+            </div>
+        </div>
+    </form>
+</section>

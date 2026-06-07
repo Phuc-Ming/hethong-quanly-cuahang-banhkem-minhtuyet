@@ -1,0 +1,67 @@
+@model List<DonHang>
+@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+}
+<section class="trang">
+    <div class="tieu-de-trang">
+        <h2>Quản lý đơn hàng</h2>
+        <a class="nut-chinh" asp-action="Tao">+ Tạo hóa đơn</a>
+    </div>
+
+    <form class="thanh-cong-cu" method="get">
+        <input name="tuKhoa" value="@ViewBag.TuKhoa" placeholder="Tìm kiếm mã đơn hoặc khách hàng..." />
+        <select name="trangThai">
+            <option value="">Tất cả trạng thái</option>
+            <option selected="@(ViewBag.TrangThai=="Chờ xử lý")">Chờ xử lý</option>
+            <option selected="@(ViewBag.TrangThai=="Đang làm")">Đang làm</option>
+            <option selected="@(ViewBag.TrangThai=="Đã giao")">Đã giao</option>
+            <option selected="@(ViewBag.TrangThai=="Đã hủy")">Đã hủy</option>
+        </select>
+        <button class="nut-phu" type="submit">Lọc</button>
+    </form>
+
+    <div class="khung">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>SĐT</th>
+                    <th>Ngày nhận</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Cập nhật</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaDon</td>
+                    <td>@item.TenKhachHang</td>
+                    <td>@item.SDT</td>
+                    <td>@item.NgayNhan.ToString("dd/MM/yyyy")</td>
+                    <td>@item.TongTien.ToString("N0")đ</td>
+                    <td><span class="nhan">@item.TrangThai</span></td>
+                    <td>
+                        <form asp-action="CapNhatTrangThai" method="post" class="bieu-mau-nho">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <select name="trangThai">
+                                <option>Chờ xử lý</option>
+                                <option>Đang làm</option>
+                                <option>Đã giao</option>
+                                <option>Đã hủy</option>
+                            </select>
+                            <button class="nut-sua" type="submit">Lưu</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a class="nut-xoa" asp-action="Xoa" asp-route-id="@item.Id" onclick="return confirm('Xóa đơn hàng này?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
