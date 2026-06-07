@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Minh Tuyết Bakery</title>
+    <link rel="stylesheet" href="~/css/giao-dien.css" />
+</head>
+<body>
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+}
+@if (controller == "DangNhap")
+{
+    @RenderBody()
+}
+else
+{
+    <div class="ung-dung">
+        <aside class="thanh-ben">
+            <div class="thuong-hieu">
+                <div class="logo">🎂</div>
+                <div>
+                    <h3>Minh Tuyết</h3>
+                    <span>Bakery Manager</span>
+                </div>
+            </div>
+
+            <a class="menu @(controller=="TrangChu" ? "active" : "")" asp-controller="TrangChu" asp-action="Index">Trang chủ</a>
+            <a class="menu @(controller=="SanPham" ? "active" : "")" asp-controller="SanPham" asp-action="Index">Sản phẩm</a>
+            <a class="menu @(controller=="DonHang" ? "active" : "")" asp-controller="DonHang" asp-action="Index">Đơn hàng / Hóa đơn</a>
+            <a class="menu @(controller=="KhachHang" ? "active" : "")" asp-controller="KhachHang" asp-action="Index">Khách hàng</a>
+            <a class="menu @(controller=="KhoNguyenLieu" ? "active" : "")" asp-controller="KhoNguyenLieu" asp-action="Index">Kho nguyên liệu</a>
+            <a class="menu @(controller=="ThongKe" ? "active" : "")" asp-controller="ThongKe" asp-action="Index">Thống kê</a>
+            <a class="menu @(controller=="NhanVien" ? "active" : "")" asp-controller="NhanVien" asp-action="Index">Nhân viên</a>
+            <a class="menu dang-xuat" asp-controller="DangNhap" asp-action="DangXuat">Đăng xuất</a>
+        </aside>
+
+        <main class="noi-dung">
+            <header class="dau-trang">
+                <div>
+                    <h1>Hệ thống quản lý cửa hàng bánh kem Minh Tuyết</h1>
+                    <p>Quản lý sản phẩm, đơn hàng, khách hàng, kho và doanh thu</p>
+                </div>
+                <div class="nguoi-dung">Xin chào, @Context.Session.GetString("HoTen")</div>
+            </header>
+
+            @RenderBody()
+        </main>
+    </div>
+}
+<script src="~/js/xu-ly.js"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>
