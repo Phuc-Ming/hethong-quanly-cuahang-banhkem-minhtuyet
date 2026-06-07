@@ -1,0 +1,41 @@
+@model TrangChuThongKe
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+<section class="trang">
+    <h2>Tổng quan hệ thống</h2>
+
+    <div class="the-thong-ke">
+        <div class="the"><span>Doanh thu hôm nay</span><h3>@Model.DoanhThuHomNay.ToString("N0")đ</h3></div>
+        <div class="the"><span>Đơn hàng hôm nay</span><h3>@Model.DonHangHomNay</h3></div>
+        <div class="the"><span>Sản phẩm đang bán</span><h3>@Model.SanPhamDangBan</h3></div>
+        <div class="the canh-bao"><span>Nguyên liệu sắp hết</span><h3>@Model.NguyenLieuSapHet</h3></div>
+    </div>
+
+    <div class="khung">
+        <h3>Đơn hàng gần đây</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>Ngày nhận</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.DonHangGanDay)
+            {
+                <tr>
+                    <td>@item.MaDon</td>
+                    <td>@item.TenKhachHang</td>
+                    <td>@item.NgayNhan.ToString("dd/MM/yyyy")</td>
+                    <td>@item.TongTien.ToString("N0")đ</td>
+                    <td><span class="nhan">@item.TrangThai</span></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
