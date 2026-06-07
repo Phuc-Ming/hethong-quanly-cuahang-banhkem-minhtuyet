@@ -1,43 +1,48 @@
 # Hệ thống quản lý cửa hàng bánh kem Minh Tuyết
 
-## 1. Giới thiệu dự án
+## 1. Giới thiệu
 
-Đây là đồ án môn Công nghệ phần mềm với đề tài “Hệ thống quản lý cửa hàng bánh kem Minh Tuyết”.  
-Hệ thống được xây dựng nhằm hỗ trợ cửa hàng quản lý sản phẩm, đơn hàng, khách hàng, nguyên liệu, hóa đơn và thống kê doanh thu.
+Đây là đồ án môn Công nghệ phần mềm với đề tài **Hệ thống quản lý cửa hàng bánh kem Minh Tuyết**. Hệ thống hỗ trợ quản lý sản phẩm, đơn hàng, hóa đơn, khách hàng, nhân viên, kho nguyên liệu và thống kê doanh thu.
 
 ## 2. Thành viên nhóm
 
-| Họ tên | MSSV | Vai trò |
+| STT | Họ tên | MSSV |
 |---|---|---|
-| Trần Trung Tín | 110123186 | Thiết kế giao diện, Front-end, Database |
-| Trương Văn Toàn | 110123188 | Product Owner, Back-end |
-| Trương Truyền Phúc Minh | 110123263 | Scrum Master, quản lý Jira, hỗ trợ lập trình |
+| 1 | Trần Trung Tín | 110123186 |
+| 2 | Trương Văn Toàn | 110123188 |
+| 3 | Trương Truyền Phúc Minh | 110123263 |
 
-## 3. Công nghệ và công cụ sử dụng
+## 3. Công nghệ sử dụng
 
-- Figma: Thiết kế giao diện người dùng
-- Jira: Quản lý tiến độ dự án theo Scrum
-- GitHub: Quản lý mã nguồn
-- Draw.io / StarUML: Thiết kế sơ đồ Use Case, ERD
-- Visual Studio Code / Visual Studio: Công cụ lập trình
+- HTML
+- CSS
+- JavaScript
+- LocalStorage
+- Figma
+- Jira
+- GitHub
 
 ## 4. Chức năng chính
 
 - Đăng nhập hệ thống
-- Quản lý sản phẩm bánh
+- Trang chủ tổng quan
+- Quản lý sản phẩm
+- Thêm, sửa, xóa sản phẩm
 - Tìm kiếm và lọc sản phẩm
 - Quản lý đơn hàng
+- Tạo hóa đơn
 - Tính tổng tiền hóa đơn
-- In hóa đơn
-- Quản lý tồn kho nguyên liệu
+- Quản lý khách hàng
+- Quản lý kho nguyên liệu
+- Quản lý nhân viên
 - Thống kê doanh thu
 
 ## 5. Cấu trúc thư mục
 
 ```text
-docs/          Tài liệu báo cáo và phân tích yêu cầu
-design/        Thiết kế giao diện, sơ đồ Use Case, ERD
-database/      File thiết kế và tạo cơ sở dữ liệu
-src/           Mã nguồn chương trình
-test/          Tài liệu kiểm thử
-screenshots/   Hình ảnh minh họa dự án
+database/      Lưu file SQL và sơ đồ ERD
+designs/       Lưu thiết kế Figma, Use Case, giao diện
+docs/          Lưu báo cáo và tài liệu phân tích
+screenshots/   Lưu ảnh minh họa Jira, GitHub, Figma, demo
+src/           Lưu mã nguồn frontend và backend
+test/          Lưu test case và checklist kiểm thử
