@@ -1,0 +1,48 @@
+@model List<NhanVien>
+@{
+    ViewData["Title"] = "Quản lý nhân viên";
+}
+<section class="trang">
+    <div class="tieu-de-trang">
+        <h2>Quản lý nhân viên</h2>
+        <a class="nut-chinh" asp-action="Them">+ Thêm nhân viên</a>
+    </div>
+
+    <form class="thanh-cong-cu" method="get">
+        <input name="tuKhoa" value="@ViewBag.TuKhoa" placeholder="Tìm kiếm nhân viên..." />
+        <button class="nut-phu" type="submit">Tìm kiếm</button>
+    </form>
+
+    <div class="khung">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã NV</th>
+                    <th>Họ tên</th>
+                    <th>SĐT</th>
+                    <th>Chức vụ</th>
+                    <th>Tài khoản</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaNV</td>
+                    <td>@item.HoTen</td>
+                    <td>@item.SDT</td>
+                    <td>@item.ChucVu</td>
+                    <td>@item.TaiKhoan</td>
+                    <td><span class="nhan">@item.TrangThai</span></td>
+                    <td>
+                        <a class="nut-sua" asp-action="Sua" asp-route-id="@item.Id">Sửa</a>
+                        <a class="nut-xoa" asp-action="Xoa" asp-route-id="@item.Id" onclick="return confirm('Xóa nhân viên này?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
