@@ -1,0 +1,34 @@
+@model NguyenLieu
+<form method="post" class="khung bieu-mau">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Mã NL</label>
+        <input asp-for="MaNL" />
+    </div>
+
+    <div>
+        <label>Tên nguyên liệu</label>
+        <input asp-for="TenNL" />
+    </div>
+
+    <div>
+        <label>Đơn vị</label>
+        <input asp-for="DonVi" />
+    </div>
+
+    <div>
+        <label>Số lượng tồn</label>
+        <input asp-for="SoLuongTon" type="number" />
+    </div>
+
+    <div>
+        <label>Mức cảnh báo</label>
+        <input asp-for="MucCanhBao" type="number" />
+    </div>
+
+    <div class="dong-day-du nut-dong">
+        <button class="nut-chinh" type="submit">Lưu</button>
+        <a class="nut-phu" asp-action="Index">Hủy</a>
+    </div>
+</form>

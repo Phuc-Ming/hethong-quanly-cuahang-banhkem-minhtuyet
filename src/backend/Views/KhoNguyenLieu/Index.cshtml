@@ -1,0 +1,43 @@
+@model List<NguyenLieu>
+@{
+    ViewData["Title"] = "Quản lý kho nguyên liệu";
+}
+<section class="trang">
+    <div class="tieu-de-trang">
+        <h2>Quản lý kho nguyên liệu</h2>
+        <a class="nut-chinh" asp-action="Them">+ Nhập nguyên liệu</a>
+    </div>
+
+    <div class="khung">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã NL</th>
+                    <th>Tên nguyên liệu</th>
+                    <th>Đơn vị</th>
+                    <th>Số lượng tồn</th>
+                    <th>Mức cảnh báo</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaNL</td>
+                    <td>@item.TenNL</td>
+                    <td>@item.DonVi</td>
+                    <td>@item.SoLuongTon</td>
+                    <td>@item.MucCanhBao</td>
+                    <td><span class="nhan">@item.TrangThai</span></td>
+                    <td>
+                        <a class="nut-sua" asp-action="Sua" asp-route-id="@item.Id">Sửa</a>
+                        <a class="nut-xoa" asp-action="Xoa" asp-route-id="@item.Id" onclick="return confirm('Xóa nguyên liệu này?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
