@@ -1,0 +1,31 @@
+@model TaoHoaDonViewModel
+@{
+    ViewData["Title"] = "Tạo hóa đơn";
+}
+<h2 class="page-title">Tạo hóa đơn</h2>
+@if (ViewBag.Loi != null) { <div class="alert">@ViewBag.Loi</div> }
+<form class="invoice-form" method="post">
+    <div class="form-card">
+        <h3>Thông tin khách hàng</h3>
+        <label>Tên khách hàng</label><input asp-for="HoTen" placeholder="Nhập tên khách hàng" required />
+        <label>Số điện thoại</label><input asp-for="SDT" placeholder="Nhập số điện thoại" required />
+        <label>Địa chỉ</label><input asp-for="DiaChi" placeholder="Nhập địa chỉ" />
+        <label>Ngày nhận bánh</label><input asp-for="NgayNhan" type="date" required />
+        <label>Ghi chú yêu cầu</label><textarea asp-for="GhiChu" placeholder="Ví dụ: ghi chữ chúc mừng sinh nhật..."></textarea>
+    </div>
+    <div class="form-card">
+        <h3>Chi tiết hóa đơn</h3>
+        <label>Chọn sản phẩm</label>
+        <select asp-for="SanPhamId" required>
+            <option value="">-- Chọn sản phẩm --</option>
+            @foreach (var sp in Model.DanhSachSanPham)
+            {
+                <option value="@sp.Id">@sp.MaBanh - @sp.TenBanh - @sp.GiaBan.ToString("N0")đ</option>
+            }
+        </select>
+        <label>Số lượng</label><input asp-for="SoLuong" type="number" min="1" required />
+        <div class="form-actions">
+            <button class="btn primary" type="submit">Lưu hóa đơn</button>
+            <button class="btn secondary" type="button" onclick="window.print()">In hóa đơn</button></div>
+    </div>
+</form>

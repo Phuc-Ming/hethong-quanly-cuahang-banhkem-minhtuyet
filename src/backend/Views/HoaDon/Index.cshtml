@@ -1,0 +1,38 @@
+@model List<HoaDon>
+@{
+    ViewData["Title"] = "Quản lý hóa đơn";
+}
+<div class="page-head"><h2>Quản lý hóa đơn</h2><a class="btn primary" asp-action="Tao">+ Tạo hóa đơn</a></div>
+@if (TempData["ThongBao"] != null) { <div class="success">@TempData["ThongBao"]</div> }
+<form class="toolbar" method="get">
+    <input name="tuKhoa" value="@ViewBag.TuKhoa" placeholder="Tìm kiếm mã hóa đơn hoặc khách hàng..." />
+    <select name="trangThai">
+        <option value="">Tất cả trạng thái</option>
+        <option value="Chờ xử lý">Chờ xử lý</option>
+        <option value="Đang làm">Đang làm</option>
+        <option value="Đã giao">Đã giao</option>
+        <option value="Đã hủy">Đã hủy</option>
+    </select>
+    <button class="btn secondary" type="submit">Lọc</button>
+</form>
+<div class="card">
+    <table>
+        <thead><tr><th>Mã HĐ</th><th>Khách hàng</th><th>SĐT</th><th>Ngày nhận</th><th>Tổng tiền</th><th>Trạng thái</th><th>Cập nhật</th><th>Thao tác</th></tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaHD</td><td>@item.HoTenKhachHang</td><td>@item.SDT</td><td>@item.NgayNhan.ToString("dd/MM/yyyy")</td><td>@item.TongTien.ToString("N0")đ</td><td><span class="badge">@item.TrangThai</span></td>
+                <td>
+                    <form class="inline-form" method="post" asp-action="CapNhatTrangThai">
+                        <input type="hidden" name="maHD" value="@item.MaHD" />
+                        <select name="trangThai"><option>Chờ xử lý</option><option>Đang làm</option><option>Đã giao</option><option>Đã hủy</option></select>
+                        <button class="btn mini" type="submit">Lưu</button>
+                    </form>
+                </td>
+                <td class="actions"><a asp-action="ChiTiet" asp-route-maHD="@item.MaHD">Chi tiết</a><form method="post" asp-action="Xoa" asp-route-maHD="@item.MaHD" onsubmit="return confirm('Xóa hóa đơn này?')"><button>Xóa</button></form></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
