@@ -1,0 +1,14 @@
+# Visual Studio / .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Build output
+src/backend/bin/
+src/backend/obj/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,14 +1,12 @@
-# Checklist kiểm thử hệ thống
+# Checklist kiểm thử
 
-| STT | Chức năng | Kết quả mong đợi | Trạng thái |
+| STT | Chức năng | Dữ liệu kiểm thử | Kết quả mong đợi |
 |---|---|---|---|
-| 1 | Đăng nhập đúng tài khoản | Vào được trang chủ | Đạt |
-| 2 | Đăng nhập sai tài khoản | Hiển thị thông báo lỗi | Đạt |
-| 3 | Thêm sản phẩm | Sản phẩm xuất hiện trong danh sách | Đạt |
-| 4 | Sửa sản phẩm | Thông tin sản phẩm được cập nhật | Đạt |
-| 5 | Xóa sản phẩm | Sản phẩm bị xóa khỏi danh sách | Đạt |
-| 6 | Tạo hóa đơn | Hệ thống tính tổng tiền | Đạt |
-| 7 | Lưu đơn hàng | Đơn hàng xuất hiện trong danh sách | Đạt |
-| 8 | Thêm khách hàng | Khách hàng xuất hiện trong danh sách | Đạt |
-| 9 | Nhập nguyên liệu | Nguyên liệu xuất hiện trong kho | Đạt |
-| 10 | Xem thống kê | Hiển thị doanh thu và biểu đồ | Đạt |
+| 1 | Đăng nhập | admin / 123456 | Vào trang chủ |
+| 2 | Đăng nhập sai | admin / sai | Hiển thị thông báo lỗi |
+| 3 | Quản lý sản phẩm | Tìm kiếm bánh kem | Hiển thị sản phẩm phù hợp |
+| 4 | Thêm sản phẩm | Nhập đầy đủ thông tin | Sản phẩm được lưu |
+| 5 | Tạo hóa đơn | Chọn sản phẩm, nhập số lượng | Hóa đơn được tạo và tính tổng tiền |
+| 6 | Cập nhật hóa đơn | Chọn trạng thái Đã giao | Trạng thái thay đổi |
+| 7 | Kho nguyên liệu | Nhập nguyên liệu mới | Nguyên liệu xuất hiện trong danh sách |
+| 8 | Thống kê | Mở trang thống kê | Hiển thị tổng doanh thu, số hóa đơn, sản phẩm bán chạy |
