@@ -1,0 +1,73 @@
+@model List<NguyenLieu>
+
+@{
+    ViewData["Title"] = "Quản lý kho nguyên liệu";
+}
+
+<h2 class="page-title">Quản lý kho nguyên liệu</h2>
+
+@if (TempData["Loi"] != null)
+{
+    <div class="thong-bao-loi">
+        @TempData["Loi"]
+    </div>
+}
+
+@if (TempData["ThanhCong"] != null)
+{
+    <div class="thong-bao-thanhcong">
+        @TempData["ThanhCong"]
+    </div>
+}
+
+<form class="quick-add" method="post" asp-action="Them">
+    <input name="MaNL" placeholder="Mã NL" />
+    <input name="TenNL" placeholder="Tên nguyên liệu" required />
+    <input name="DonVi" placeholder="Đơn vị" required />
+    <input name="SoLuongTon" type="text" inputmode="numeric" placeholder="Số lượng tồn" required />
+
+    <select name="TrangThai">
+        <option value="Đủ hàng">Đủ hàng</option>
+        <option value="Sắp hết">Sắp hết</option>
+    </select>
+
+    <button class="btn primary" type="submit">+ Nhập nguyên liệu</button>
+</form>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Mã nguyên liệu</th>
+                <th>Tên nguyên liệu</th>
+                <th>Đơn vị</th>
+                <th>Số lượng tồn</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaNL</td>
+                    <td>@item.TenNL</td>
+                    <td>@item.DonVi</td>
+                    <td>@item.SoLuongTon</td>
+                    <td>
+                        <span class="badge">@item.TrangThai</span>
+                    </td>
+                    <td>
+                        <a class="btn secondary"
+                           asp-controller="KhoNguyenLieu"
+                           asp-action="Sua"
+                           asp-route-maNL="@item.MaNL">
+                            Sửa
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

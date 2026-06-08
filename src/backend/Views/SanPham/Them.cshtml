@@ -1,0 +1,15 @@
+@model SanPham
+@{
+    ViewData["Title"] = "Thêm sản phẩm";
+}
+<h2 class="page-title">Thêm sản phẩm</h2>
+@if (ViewBag.Loi != null) { <div class="alert">@ViewBag.Loi</div> }
+<form class="form-card" method="post">
+    <label>Mã bánh</label><input asp-for="MaBanh" placeholder="Nhập mã bánh" value="" />
+    <label>Tên sản phẩm</label><input asp-for="TenBanh" placeholder="Nhập tên sản phẩm" required />
+    <label>Loại sản phẩm</label><select asp-for="LoaiBanh"><option>Bánh kem</option><option>Bánh mì</option><option>Bánh ngọt</option></select>
+    <label>Giá bán</label><input asp-for="GiaBan" type="text" inputmod="numeric" placeholder="Nhập giá bán" required />
+    <label>Số lượng</label><input asp-for="SoLuong" type="number" min="0" placeholder="Nhập số lượng" required />
+    <label>Trạng thái</label><select asp-for="TrangThai"><option>Đang bán</option><option>Hết hàng</option></select>
+    <div class="form-actions"><button class="btn primary" type="submit">Lưu</button><a class="btn secondary" asp-action="Index">Hủy</a></div>
+</form>

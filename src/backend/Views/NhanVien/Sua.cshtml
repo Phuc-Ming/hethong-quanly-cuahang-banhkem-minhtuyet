@@ -1,0 +1,50 @@
+@model NhanVien
+
+@{
+    ViewData["Title"] = "Sửa nhân viên";
+}
+
+<h2 class="page-title">Sửa thông tin nhân viên</h2>
+
+@if (TempData["Loi"] != null)
+{
+    <div class="thong-bao-loi">
+        @TempData["Loi"]
+    </div>
+}
+
+<div class="card form-card">
+    <form method="post" asp-action="Sua">
+        <label>Mã nhân viên</label>
+        <input asp-for="MaNV" readonly />
+
+        <label>Họ tên</label>
+        <input asp-for="HoTen" placeholder="Nhập họ tên nhân viên" required />
+
+        <label>Số điện thoại</label>
+        <input asp-for="SDT" placeholder="Nhập số điện thoại" />
+
+        <label>Chức vụ</label>
+        <select asp-for="ChucVu">
+            <option value="Quản lý">Quản lý</option>
+            <option value="Nhân viên">Nhân viên</option>
+        </select>
+
+        <label>Tài khoản</label>
+        <input asp-for="TaiKhoan" placeholder="Nhập tài khoản" required />
+
+        <label>Mật khẩu</label>
+        <input asp-for="MatKhau" placeholder="Nhập mật khẩu" />
+
+        <label>Trạng thái</label>
+        <select asp-for="TrangThai">
+            <option value="Hoạt động">Hoạt động</option>
+            <option value="Đã nghỉ">Đã nghỉ</option>
+        </select>
+
+        <div class="actions">
+            <button type="submit" class="btn primary">Lưu thay đổi</button>
+            <a class="btn secondary" asp-action="Index">Hủy</a>
+        </div>
+    </form>
+</div>

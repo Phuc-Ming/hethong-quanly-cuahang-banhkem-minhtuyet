@@ -1,0 +1,26 @@
+@model ThongKeViewModel
+@{
+    ViewData["Title"] = "Thống kê doanh thu";
+    var max = Model.DoanhThuTuan.Count == 0 ? 1M : Math.Max(1M, Model.DoanhThuTuan.Max());
+}
+<h2 class="page-title">Thống kê doanh thu</h2>
+<div class="report-grid">
+    <div class="card">
+        <table class="summary-table">
+            <tr><th>Tổng doanh thu</th><td>@Model.TongDoanhThu.ToString("N0")đ</td></tr>
+            <tr><th>Số hóa đơn</th><td>@Model.SoHoaDon</td></tr>
+            <tr><th>Sản phẩm bán chạy</th><td>@Model.SanPhamBanChay</td></tr>
+            <tr><th>Khách hàng mới</th><td>@Model.KhachHangMoi</td></tr>
+        </table>
+    </div>
+    <div class="card chart-card">
+        <h3>Thống kê 5 ngày gần đây</h3>
+        <div class="chart">
+            @for (int i = 0; i < Model.DoanhThuTuan.Count; i++)
+            {
+                var h = (int)(Model.DoanhThuTuan[i] / max * 160) + 20;
+                <div class="bar-wrap"><div class="bar" style="height:@h.ToString()px"></div><span>N@(i+1)</span></div>
+            }
+        </div>
+    </div>
+</div>

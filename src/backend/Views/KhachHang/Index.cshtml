@@ -1,0 +1,60 @@
+@model List<KhachHang>
+@{
+    ViewData["Title"] = "Quản lý khách hàng";
+}
+<h2 class="page-title">Quản lý khách hàng</h2>
+
+@if (TempData["Loi"] != null)
+{
+    <div class="thong-bao-loi">
+        @TempData["Loi"]
+    </div>
+}
+
+@if (TempData["ThanhCong"] != null)
+{
+    <div class="thong-bao-thanhcong">
+        @TempData["ThanhCong"]
+    </div>
+}
+<form class="toolbar" method="get"><input name="tuKhoa" value="@ViewBag.TuKhoa"
+                                              placeholder="Tìm kiếm tên hoặc số điện thoại" /><button type="submit" class="btn secondary">Tìm</button></form>
+    <form class="quick-add" method="post" asp-action="Them">
+        <input name="HoTen" placeholder="Tên khách hàng" required />
+        <input name="SDT" placeholder="SĐT" required />
+        <input name="DiaChi" placeholder="Địa chỉ" />
+        <button type="submit" class="btn primary">+ Thêm khách hàng</button>
+    </form>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã KH</th>
+                    <th>Tên khách hàng</th>
+                    <th>SĐT</th>
+                    <th>Địa chỉ</th>
+                    <th>Tổng hóa đơn</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaKH</td>
+                        <td>@item.HoTen</td>
+                        <td>@item.SDT</td>
+                        <td>@item.DiaChi</td>
+                        <td>@item.TongDon</td>
+                        <td>
+                            <form asp-controller="KhachHang" asp-action="Xoa" method="post" style="display:inline;"
+                                  onsubmit="return confirm('Bạn có chắc muốn xóa khách hàng này không?');">
+                                <input type="hidden" name="maKH" value="@item.MaKH" />
+                                <button type="submit" class="nut-xoa">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
