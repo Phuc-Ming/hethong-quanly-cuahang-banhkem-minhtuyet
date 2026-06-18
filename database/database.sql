@@ -10,7 +10,6 @@ create table san_pham
     loai_banh varchar(50) not null,
     gia_ban decimal(18,2) not null,
     so_luong int not null default 0,
-    mo_ta text null,
     trang_thai varchar(30) not null default 'Đang bán'
 );
 
