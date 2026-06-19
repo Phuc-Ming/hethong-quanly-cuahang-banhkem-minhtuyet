@@ -8,6 +8,5 @@ public class SanPham
     public string LoaiBanh { get; set; } = "";
     public decimal GiaBan { get; set; }
     public int SoLuong { get; set; }
-    public string MoTa { get; set; } = "";
     public string TrangThai { get; set; } = "Đang bán";
 }

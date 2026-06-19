@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Quản lý sản phẩm";
 }
-<div class="page-head"><h2>Quản lý sản phẩm</h2><a class="btn primary" asp-action="Them">+ Thêm sản phẩm</a></div>
+<div class="page-head">
+    <h2>Quản lý sản phẩm</h2><a class="btn primary" asp-action="Them">+ Thêm sản phẩm</a>
+</div>
 <form class="toolbar" method="get">
     <input name="tuKhoa" value="@ViewBag.TuKhoa" placeholder="Tìm kiếm tên bánh..." />
     <select name="loaiBanh">
@@ -15,15 +17,33 @@
 </form>
 <div class="card">
     <table>
-        <thead><tr><th>Mã bánh</th><th>Tên bánh</th><th>Loại bánh</th><th>Giá bán</th><th>Số lượng</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
-        <tbody>
-        @foreach (var item in Model)
-        {
+        <thead>
             <tr>
-                <td>@item.MaBanh</td><td>@item.TenBanh</td><td>@item.LoaiBanh</td><td>@item.GiaBan.ToString("N0")đ</td><td>@item.SoLuong</td><td><span class="badge">@item.TrangThai</span></td>
-                <td class="actions"><a asp-action="Sua" asp-route-id="@item.Id">Sửa</a><form method="post" asp-action="Xoa" asp-route-id="@item.Id" onsubmit="return confirm('Xóa sản phẩm này?')"><button>Xóa</button></form></td>
+                <th>Mã bánh</th>
+                <th>Tên bánh</th>
+                <th>Loại bánh</th>
+                <th>Giá bán</th>
+                <th>Số lượng</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaBanh</td>
+                    <td>@item.TenBanh</td>
+                    <td>@item.LoaiBanh</td>
+                    <td>@item.GiaBan.ToString("N0")đ</td>
+                    <td>@item.SoLuong</td>
+                    <td><span class="badge">@item.TrangThai</span></td>
+                    <td class="actions"><a asp-action="Sua" asp-route-id="@item.Id">Sửa</a>
+                        <form method="post" asp-action="Xoa" asp-route-id="@item.Id"
+                              onsubmit="return confirm('Xóa sản phẩm này?')"><button>Xóa</button></form>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

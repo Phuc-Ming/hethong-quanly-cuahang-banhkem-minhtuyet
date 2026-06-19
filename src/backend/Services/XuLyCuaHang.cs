@@ -63,15 +63,14 @@ public class XuLyCuaHang
     {
         await using var conn = _ketNoi.TaoKetNoi();
         await conn.OpenAsync();
-        const string sql = @"insert into san_pham(ma_banh, ten_banh, loai_banh, gia_ban, so_luong, mo_ta, trang_thai)
-                             values(@ma, @ten, @loai, @gia, @sl, @mota, @trangthai)";
+        const string sql = @"insert into san_pham(ma_banh, ten_banh, loai_banh, gia_ban, so_luong, trang_thai)
+                             values(@ma, @ten, @loai, @gia, @sl, @trangthai)";
         await using var cmd = new MySqlCommand(sql, conn);
         cmd.Parameters.AddWithValue("@ma", sp.MaBanh);
         cmd.Parameters.AddWithValue("@ten", sp.TenBanh);
         cmd.Parameters.AddWithValue("@loai", sp.LoaiBanh);
         cmd.Parameters.AddWithValue("@gia", sp.GiaBan);
         cmd.Parameters.AddWithValue("@sl", sp.SoLuong);
-        cmd.Parameters.AddWithValue("@mota", sp.MoTa ?? "");
         cmd.Parameters.AddWithValue("@trangthai", sp.TrangThai);
         await cmd.ExecuteNonQueryAsync();
     }
@@ -80,7 +79,7 @@ public class XuLyCuaHang
     {
         await using var conn = _ketNoi.TaoKetNoi();
         await conn.OpenAsync();
-        const string sql = @"update san_pham set ma_banh=@ma, ten_banh=@ten, loai_banh=@loai, gia_ban=@gia, so_luong=@sl, mo_ta=@mota, trang_thai=@trangthai where id=@id";
+        const string sql = @"update san_pham set ma_banh=@ma, ten_banh=@ten, loai_banh=@loai, gia_ban=@gia, so_luong=@sl, trang_thai=@trangthai where id=@id";
         await using var cmd = new MySqlCommand(sql, conn);
         cmd.Parameters.AddWithValue("@id", sp.Id);
         cmd.Parameters.AddWithValue("@ma", sp.MaBanh);
@@ -88,7 +87,6 @@ public class XuLyCuaHang
         cmd.Parameters.AddWithValue("@loai", sp.LoaiBanh);
         cmd.Parameters.AddWithValue("@gia", sp.GiaBan);
         cmd.Parameters.AddWithValue("@sl", sp.SoLuong);
-        cmd.Parameters.AddWithValue("@mota", sp.MoTa ?? "");
         cmd.Parameters.AddWithValue("@trangthai", sp.TrangThai);
         await cmd.ExecuteNonQueryAsync();
     }
@@ -625,7 +623,6 @@ public class XuLyCuaHang
         LoaiBanh = LayChuoi(r["loai_banh"]),
         GiaBan = LaySoThapPhan(r["gia_ban"]),
         SoLuong = LaySoNguyen(r["so_luong"]),
-        MoTa = LayChuoi(r["mo_ta"]),
         TrangThai = LayChuoi(r["trang_thai"])
     };
 

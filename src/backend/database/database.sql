@@ -10,7 +10,6 @@ create table san_pham
     loai_banh varchar(50) not null,
     gia_ban decimal(18,2) not null,
     so_luong int not null default 0,
-    mo_ta text null,
     trang_thai varchar(30) not null default 'Đang bán'
 );
 
@@ -73,11 +72,11 @@ create table nguyen_lieu
     trang_thai varchar(30) not null default 'Đủ hàng'
 );
 
-insert into san_pham(ma_banh, ten_banh, loai_banh, gia_ban, so_luong, mo_ta, trang_thai) values
-('B001', 'Bánh kem dâu', 'Bánh kem', 250000, 40, 'Bánh kem vị dâu phù hợp sinh nhật', 'Đang bán'),
-('B002', 'Bánh mì bơ', 'Bánh mì', 340000, 20, 'Bánh mì bơ thơm béo', 'Đang bán'),
-('B003', 'Bánh tiramisu', 'Bánh ngọt', 120000, 0, 'Bánh tiramisu mềm, vị cà phê nhẹ', 'Hết hàng'),
-('B004', 'Bánh socola', 'Bánh kem', 80000, 30, 'Bánh socola nhỏ', 'Đang bán');
+insert into san_pham(ma_banh, ten_banh, loai_banh, gia_ban, so_luong, trang_thai) values
+('B001', 'Bánh kem dâu', 'Bánh kem', 250000, 40, 'Đang bán'),
+('B002', 'Bánh mì bơ', 'Bánh mì', 340000, 20, 'Đang bán'),
+('B003', 'Bánh tiramisu', 'Bánh ngọt', 120000, 0, 'Hết hàng'),
+('B004', 'Bánh socola', 'Bánh kem', 80000, 30, 'Đang bán');
 
 insert into khach_hang(ma_kh, ho_ten, sdt, dia_chi, tong_don) values
 ('KH001', 'Trương Truyền Phúc Minh', '0846011105', 'Trà Vinh', 5),
